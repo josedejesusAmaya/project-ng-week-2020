@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as moment from 'moment';
+import { format as datefnsFormat } from 'date-fns';
 
 @Pipe({
   name: 'dateFormat'
 })
 export class DateFormatPipe implements PipeTransform {
 
-  transform(value: Date | number | string, format: string = 'YYYY/MM/DD'): string {
-    return moment(value).format(format);
+  transform(value: Date | number, format: string = 'YYYY/MM/DD'): string {
+    return datefnsFormat(value, format);
   }
 
 }

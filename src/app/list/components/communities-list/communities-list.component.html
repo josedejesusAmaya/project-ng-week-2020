@@ -10,7 +10,6 @@
     <tr>
       <th>Name</th>
       <th>Members</th>
-      <th>Created At</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -20,10 +19,9 @@
       <td>
         <b
           >{{ community.members }}
-          <sup>{{ calcMembers(community.members) }}</sup></b
+          <sup>{{ community.members | calcMembers }}</sup></b
         >
       </td>
-      <td>{{ community.created_at | dateFormat }}</td>
       <td>
         <button (click)="onRemove(community)">Remove</button>
       </td>

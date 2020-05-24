@@ -18,8 +18,8 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.listA = this.dataService.getListA();
-    this.listB = this.dataService.getListB();
+    this.listA = this.dataService.getListA(70);
+    this.listB = this.dataService.getListB(70);
   }
 
   add(list: Community[], newName: string) {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import sub from 'date-fns/sub';
+import { format } from 'date-fns';
 
 import { Community } from '../models/community.model';
 import { COMMUNITIES } from './communities';
@@ -25,9 +26,7 @@ export class DataService {
   }
 
   generateDate() {
-    const days = this.getRandomInt(0, 1000);
-    const resp = sub(new Date(), { days }).toString();
-    return resp;
+    return format(new Date(2014, 1, 11), 'MM/dd/yyyy');
   }
 
   getRandomInt(min: number, max: number) {

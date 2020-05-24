@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { memoize } from 'lodash';
 
 @Pipe({
   name: 'calcMembers'
@@ -6,14 +7,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CalcMembersPipe implements PipeTransform {
 
   transform(value: number): string {
-    console.log('pipe call');
-    if (value < 5) {
-      return 'low';
-    } else if (value >= 5 && value <= 7) {
-      return 'medium';
-    } else if (value > 7) {
-      return 'hight';
-    }
+    return calcMembersMemoize(value);
   }
-
 }
+
+const calcMembers = (value) => {
+  console.log('pure ' + value);
+  if (value < 5) {
+    return 'low';
+  } else if (value >= 5 && value <= 7) {
+    return 'medium';
+  } else if (value > 7) {
+    return 'hight';
+  }
+};
+
+const calcMembersMemoize = memoize(calcMembers);

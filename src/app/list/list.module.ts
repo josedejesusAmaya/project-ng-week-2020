@@ -7,20 +7,23 @@ import { ListComponent } from './list.component';
 import { CommunitiesListComponent } from './components/communities-list/communities-list.component';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { CalcMembersPipe } from './pipes/calc-members.pipe';
-
+import { CommunitiesListVscrollComponent } from './communities/communities-list-vscroll/communities-list-vscroll.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
     ListComponent,
     CommunitiesListComponent,
     DateFormatPipe,
-    CalcMembersPipe
+    CalcMembersPipe,
+    CommunitiesListVscrollComponent
   ],
   imports: [
     CommonModule,
     ListRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    ScrollingModule
   ]
 })
 export class ListModule { }

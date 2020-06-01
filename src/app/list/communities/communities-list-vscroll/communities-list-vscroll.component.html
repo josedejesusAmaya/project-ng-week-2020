@@ -1,0 +1,30 @@
+<h3>{{ title }}</h3>
+<input
+  type="search"
+  placeholder="Type name"
+  [formControl]="nameInput"
+  (keydown.enter)="handleEnter()"
+/>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Members</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      <cdk-virtual-scroll-viewport [itemSize]="70" class="table-viewport">
+        <tr *cdkVirtualFor="let community of data">
+            <td>{{ community.name }}</td>
+            <td>
+                <b>{{ community.members }}
+                    <sup>{{ community.members | calcMembers }}</sup></b>
+            </td>
+            <td>
+                <button (click)="onRemove(community)">Remove</button>
+            </td>
+        </tr>
+      </cdk-virtual-scroll-viewport>
+  </tbody>
+</table>
